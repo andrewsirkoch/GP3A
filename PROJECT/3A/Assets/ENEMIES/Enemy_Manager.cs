@@ -28,6 +28,7 @@ public class Enemy_Manager : MonoBehaviour
             {
                 Player_Info.ended = true;
                 PlayerPrefs.SetInt("treasure", PlayerPrefs.GetInt("treasure") + 50);
+                PlayerPrefs.SetInt("treasureObtained", PlayerPrefs.GetInt("treasureObtained") + 50);
                 PlayerPrefs.SetInt("difficulty", PlayerPrefs.GetInt("difficulty") + 1);
                 GameObject.Find("Player").GetComponent<Player_Info>().health = 100;
                 SceneManager.LoadScene(3);

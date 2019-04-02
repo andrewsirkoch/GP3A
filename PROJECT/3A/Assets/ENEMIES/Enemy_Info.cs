@@ -13,6 +13,7 @@ public class Enemy_Info : MonoBehaviour
     private GameObject hud;
     private bool rewardSpawned = false;
     public static int enemyNumber = 0;
+    private bool statInc = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,11 @@ public class Enemy_Info : MonoBehaviour
                 sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, sprite.color.a - 0.0075f);
                 if (sprite.color.a <= 0.05f)
                 {
+                    if (statInc == false)
+                    {
+                        statInc = true;
+                        PlayerPrefs.SetInt("enemiesKilled", PlayerPrefs.GetInt("enemiesKilled") + 1);
+                    }
                     Destroy(this.gameObject);
                 }
             }

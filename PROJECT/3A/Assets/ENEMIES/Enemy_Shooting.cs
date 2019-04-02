@@ -6,15 +6,27 @@ public class Enemy_Shooting : MonoBehaviour
 {
     public int cannonFireInterval;
     private int timer = 0;
-    public static bool drawRays = false;
+    public static bool drawRays = true;
     public float cannonOffsetX;
+    public int cannonLevel;
 
     private float playerLevelModifier;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (PlayerPrefs.GetInt("difficulty") <= 3)
+        {
+            cannonLevel = 0;
+        }
+        else if (PlayerPrefs.GetInt("difficulty") > 3 && PlayerPrefs.GetInt("difficulty") <= 6)
+        {
+            cannonLevel = 1;
+        }
+        else if (PlayerPrefs.GetInt("difficulty") > 6)
+        {
+            cannonLevel = 2;
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +42,7 @@ public class Enemy_Shooting : MonoBehaviour
         RaycastHit2D leftHit = Physics2D.Raycast(transform.position, transform.up, 40);
         if (leftHit.collider != null && leftHit.collider.gameObject.CompareTag("Player") && timer >= cannonFireInterval)
         {
-            fireCannons("left", PlayerPrefs.GetInt("cannonLevel"));
+            fireCannons("left", cannonLevel);
             timer = 0;
         }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MainMenu_UpdateSliders : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +46,12 @@ public class MainMenu_UpdateSliders : MonoBehaviour
                 PlayerPrefs.SetFloat("volume_amb", slider.value);
             }
         }
+
+        UpdateAudio();
+    }
+
+    public void UpdateAudio()
+    {
+        GameObject.Find("Player").GetComponentInChildren<Player_AudioManage>().UpdateAudio();
     }
 }

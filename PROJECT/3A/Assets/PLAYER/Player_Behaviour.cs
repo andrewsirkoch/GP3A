@@ -14,8 +14,9 @@ public class Player_Behaviour : MonoBehaviour
     public float startingRotationSpeed = 0.01f;
     private bool holdingDown = false;
     private int timer;
+    public bool moving = false;
 
-    private bool wakeOn = false;
+    public bool wakeOn = false;
     public bool atMaxSpeed;
     public GameObject Particles;
     public GameObject WakeLeft;
@@ -34,6 +35,7 @@ public class Player_Behaviour : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
+            moving = true;
             if (holdingDown == false)
             {
                 Particles.GetComponent<ParticleSystem>().Play();
@@ -60,6 +62,7 @@ public class Player_Behaviour : MonoBehaviour
                 WakeLeft.GetComponent<ParticleSystem>().Stop();
                 WakeRight.GetComponent<ParticleSystem>().Stop();
                 wakeOn = false;
+                moving = false;
                 forwardSpeed = startingSpeed;
             }
             if (forwardSpeed != startingSpeed)

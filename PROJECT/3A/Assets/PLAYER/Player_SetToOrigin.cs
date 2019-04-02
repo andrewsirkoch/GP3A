@@ -15,4 +15,8 @@ public class Player_SetToOrigin : MonoBehaviour
     {
         
     }
+    public void UpdateAppearance()
+    {
+        GameObject.Find("Player").GetComponentInChildren<Player_Appearance>().UpdateAppearance();
+    }
 }

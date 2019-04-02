@@ -41,6 +41,7 @@ public class Player_Shooting : MonoBehaviour
         if (Input.GetKey(KeyCode.E) && rightTimer >= cannonFireInterval)
         {
             fireCannons("right", PlayerPrefs.GetInt("cannonLevel"));
+            
             rightTimer = 0;
         }
         if (Input.GetKey(KeyCode.Q) && leftTimer >= cannonFireInterval)
@@ -53,6 +54,7 @@ public class Player_Shooting : MonoBehaviour
 
     void fireCannons(string direction, int cannonLevel)
     {
+
         GameObject.Find("CannonFire").GetComponent<Cannon_PickSound>().playSound();
         if (direction == "left")
         {
@@ -108,6 +110,8 @@ public class Player_Shooting : MonoBehaviour
     }
     void SpawnCannon(float xOffset, float yOffset, float zOffset, string direction, float speed)
     {
+        PlayerPrefs.SetInt("timesShot", PlayerPrefs.GetInt("timesShot") + 1);
+
         GameObject Cannon;
         Cannon = Instantiate(Resources.Load("cannonball"), transform, false) as GameObject;
         

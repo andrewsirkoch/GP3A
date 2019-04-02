@@ -45,6 +45,8 @@ public class Cannon_Ball : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            PlayerPrefs.SetInt("timesHit", PlayerPrefs.GetInt("timesHit") + 1);
+
             GameObject.Find("CannonHit").GetComponent<Cannon_PickSound>().playSound();
             foreach (Transform child in transform)
             {

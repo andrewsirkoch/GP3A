@@ -12,6 +12,7 @@ public class UI_reward : MonoBehaviour
     {
         goldAmount = Random.Range(1, 25);
         PlayerPrefs.SetInt("treasure", PlayerPrefs.GetInt("treasure") + goldAmount);
+        PlayerPrefs.SetInt("treasureObtained", PlayerPrefs.GetInt("treasureObtained") + goldAmount);
         GetComponentInChildren<Text>().text = goldAmount.ToString();
     }
 

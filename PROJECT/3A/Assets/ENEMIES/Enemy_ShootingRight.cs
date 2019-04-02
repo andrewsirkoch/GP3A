@@ -7,9 +7,10 @@ public class Enemy_ShootingRight : MonoBehaviour
     [HideInInspector]
     public int cannonFireInterval;
     private int timer = 0;
-    public static bool drawRays = false;
+    public static bool drawRays = true;
     [HideInInspector]
     public float cannonOffsetX;
+    private int cannonLevel;
 
     private float playerLevelModifier;
     /// <summary>
@@ -23,6 +24,8 @@ public class Enemy_ShootingRight : MonoBehaviour
     {
         cannonOffsetX = gameObject.GetComponent<Enemy_Shooting>().cannonOffsetX;
         cannonFireInterval = gameObject.GetComponent<Enemy_Shooting>().cannonFireInterval;
+        cannonLevel = gameObject.GetComponent<Enemy_Shooting>().cannonLevel;
+
     }
     void FixedUpdate()
     {
@@ -35,7 +38,7 @@ public class Enemy_ShootingRight : MonoBehaviour
 
         if (rightHit.collider != null && rightHit.collider.gameObject.CompareTag("Player") && timer >= cannonFireInterval)
         {
-            fireCannons("right", PlayerPrefs.GetInt("cannonLevel"));
+            fireCannons("right", cannonLevel);
             timer = 0;
         }
 

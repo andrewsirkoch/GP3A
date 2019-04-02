@@ -20,7 +20,6 @@ public class Player_Info : MonoBehaviour
 
     public void Awake()
     {
-
         DontDestroyOnLoad(this.gameObject);
 
         // --------------------------------------O
@@ -40,10 +39,23 @@ public class Player_Info : MonoBehaviour
         if (!PlayerPrefs.HasKey("volume_music")) PlayerPrefs.SetFloat("volume_music", 1f);
         if (!PlayerPrefs.HasKey("volume_sfx")) PlayerPrefs.SetFloat("volume_sfx", 1f);
         if (!PlayerPrefs.HasKey("volume_amb")) PlayerPrefs.SetFloat("volume_amb", 1f);
+
+        // STATS
+
+        if (!PlayerPrefs.HasKey("timesShot")) PlayerPrefs.SetInt("timesShot", 0); //
+                                                                                  // For Accuracy Stat
+        if (!PlayerPrefs.HasKey("timesHit")) PlayerPrefs.SetInt("timesHit", 0); ////
+
+        if (!PlayerPrefs.HasKey("enemiesKilled")) PlayerPrefs.SetInt("enemiesKilled", 0);
+        if (!PlayerPrefs.HasKey("treasureObtained")) PlayerPrefs.SetInt("treasureObtained", 0);
     }
 
     public void Update()
     {
+        if (health > 0 && Enemy_Info.enemyNumber > 0)
+        {
+            Player_Info.ended = false;
+        }
         if (health <= 0 && Player_Info.ended == false)
         {
             Player_Info.ended = true;
@@ -57,7 +69,6 @@ public class Player_Info : MonoBehaviour
     {
         gameObject.GetComponent<Player_Behaviour>().enabled = condition;
         gameObject.GetComponentInChildren<Player_Shooting>().enabled = condition;
-        gameObject.GetComponentInChildren<Player_CameraZoom>().enabled = condition;
         gameObject.GetComponentInChildren<Player_RotateCamera>().enabled = condition;
         foreach (CapsuleCollider2D collider in gameObject.GetComponentsInChildren<CapsuleCollider2D>())
         {

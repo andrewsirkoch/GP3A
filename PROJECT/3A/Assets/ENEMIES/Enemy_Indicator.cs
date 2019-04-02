@@ -33,7 +33,7 @@ public class Enemy_Indicator : MonoBehaviour
         }
         
 
-        //Debug.DrawRay(transform.position, direction * distance, Color.green, 0.01f, true);
+        Debug.DrawRay(transform.position, direction * distance, Color.green, 0.01f, true);
     }
     void EnableIndicator()
     {

@@ -35,7 +35,7 @@ public class MainMenu_ButtonFunctions : MonoBehaviour
                     PlayerPrefs.SetInt("sailLevel", 2);
                     PlayerPrefs.SetInt("hullLevel", 2);
                     PlayerPrefs.SetInt("crewLevel", 2);
-                    PlayerPrefs.SetInt("treasure", 20000);
+                    PlayerPrefs.SetInt("treasure", 0);
                     PlayerPrefs.SetInt("repairKits", 20);
                     PlayerPrefs.SetInt("difficulty", 16);
                 }
@@ -46,7 +46,7 @@ public class MainMenu_ButtonFunctions : MonoBehaviour
                     PlayerPrefs.SetInt("hullLevel", 0);
                     PlayerPrefs.SetInt("crewLevel", 0);
                     PlayerPrefs.SetInt("treasure", 0);
-                    PlayerPrefs.SetInt("repairKits", 0);
+                    PlayerPrefs.SetInt("repairKits", 2);
                     PlayerPrefs.SetInt("difficulty", 1);
                 }
             }
