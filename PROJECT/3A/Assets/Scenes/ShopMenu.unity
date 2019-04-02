@@ -20801,7 +20801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costPerLevel: 50
-  repairKitCost: 25
+  repairKitCost: 15
 --- !u!1 &480257711
 GameObject:
   m_ObjectHideFlags: 0
